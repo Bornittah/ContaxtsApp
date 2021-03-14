@@ -1,0 +1,143 @@
+
+.body{
+    margin: 20px;
+    font-family: "Tw Cen MT", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.row{
+    /* box-sizing: border-box; */
+    width: 50%;
+    margin: 0 auto;
+    top: auto;
+    height: 80%;
+    display:block;
+
+}
+
+.line{
+    height:1px; background-color: beige; width: 80%; margin: auto;
+}
+.highlight{
+    text-align: center;
+}
+.first-col{
+    float: left;
+    width: 40%;
+    text-align: center;
+    height: 100%;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+}
+
+.form{
+	height: auto;
+	position: relative;
+	box-sizing: border-box;
+	background-color: #1d323f;
+	display: inline-block;
+	margin: auto 0;
+    color: #fff;
+    width: 80%;
+    height: 30%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 70px;
+    padding-right: 70px;
+    
+}  
+
+.form-div{
+display: block;
+margin: 0 auto;
+}
+
+.heading1{
+    color: #ffff;
+    text-shadow: 1px 1px 2px #000000;
+    text-align: center;
+    font-family: "Tw Cen MT", sans-serif;
+    font-size: 25pt;
+}
+
+.heading2{
+	color: #ffff;
+    text-shadow: 1px 1px 2px #000000;
+    text-align: center;
+    font-family: "Tw Cen MT", serif;
+    font-size: 24pt;
+}
+
+.input{
+			height: 40px;
+			width: 100%;
+			padding: 12px;
+			margin-bottom: 5px;
+			border-collapse: collapse;
+			border:none;
+			outline: none;
+			border: none;
+			/* color: #1b75bc; */
+			border-top: 0;
+            padding-left:15px;
+            
+		}
+		
+		.submit_btn{
+            width: 90%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+			border:none;
+			border-radius: 7px;
+			border-collapse: collapse;
+			text-align: center;
+            font-size: 12pt;
+            background-color:   #0baa88;
+        }
+        .btn_div{
+            /* margin: auto 0; */
+            padding-left: 60px;
+            width: auto;
+        }
+
+        .submit_btn:hover {
+            background-color:#f58a25;
+            color: white;
+        }
+
+		.div{
+			padding-top: 5px;
+            padding-bottom: 5px;
+            margin: 0 auto;
+            text-align: center;
+            
+        }
+        
+        a:link {
+            color: #0baa88;
+            font-size: 14pt;
+            text-decoration: none;
+        }
+       
+    a:hover {
+        color: #f58a25;
+    }
+    
+    a:active {
+        color: #0baa88;
+            font-size: 14pt;
+            text-decoration: none;
+    } 
+    label{
+        padding-left: 10px;
+    }
+    .label_error{
+        text-align: left;
+        color: #f58a25;
+        padding-left: 15px;
+    }
+   

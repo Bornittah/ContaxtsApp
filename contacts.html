@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contaxts</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+</head>
+</head>
+<body class="body">
+	<div class="content">
+	<div class="contacts_div">
+	<div class="header">
+	<h1 class="heading1">CONTAXTS</h1>
+	<!-- top bar menu -->
+	<div class="navbar">
+		<a href="contacts.html"  class="nav-items">Contacts</a>
+		<a href="favourites.html"  class="nav-items">Favourites</a>
+		<a href="search.html" class="nav-items opensearch"><img src="images/search-icon.jpg" style="width: 30px"></a>
+		<a href="#" onclick="profile_menu();" class="nav-items"><img src="images/phone.jpg" style="width:60px; border-radius:50%; background-color:#6838;"></a>
+	</div>
+   <!-- profile menu -->
+   <div class="profile-menu">
+   	<span class="close_profile_menu">&times;</span>
+		<ul class="user-profile">
+		<li><a href="#" onclick="myprofile()" class="">My profile</a></li>
+		<li><a href="index.html" class="logout">Logout</a></li>
+		</ul>
+	</div>
+	</div>
+<!-- select all -->
+<div  class="selectcontacts">
+	<p id="numberOfContacts"></p>
+	<!-- <label>Select<input type="checkbox"></label> -->
+</div>
+
+	<!-- contact list -->
+	
+	<div class="listOfContacts"></div>
+
+	<!-- ADD CONTACTS BUTTON -->
+	<div>
+	<button id="open_contactmodal" class="addcontact-btn"><img src="images/add-icon.png" style="width: 20px"></button>
+	</div>
+	<div>
+		<div id="contact-modal" class="modal">
+	    <div class="model-content">
+		<span class="close">&times;</span>
+		<form method="POST">
+		<!-- 	<div id="profileImage-letter"></div> -->
+			<div class="profile_pic ">
+			<img src="images/phone.jpg" id="photo">
+			<input type="file" name="profilepic" id="file">
+			<label for="file" class="uploadpic" id="uploadpic">Choose photo</label>
+		    </div>
+			<div><p style="text-align: center;"><span id="login_error" class="label_error"></p></div>
+			<div>
+				<label>First Name<span id="for_fname" class="label_error"></span></label>
+				<input class="modal-content-elmnts" type="text" name="" id="cont_fname">
+			</div>
+			<div>
+				<label>Last Name<span id="for_lname" class="label_error"></span></label>
+				<input class="modal-content-elmnts" type="text" name="" id="cont_lname">
+			</div>
+			<div>
+				<label>Country Code<span id="for_code" class="label_error"></span></label>
+				<input class="modal-content-elmnts" type="text" name="" id="tel_code">
+			</div>
+			<div>
+				<label>Telephone<span id="for_phone" class="label_error"></span></label>
+				<input class="modal-content-elmnts" type="text" name="" id="cont_phone">
+			</div>
+				<input class="inner" type="submit"name="" id="contacts_save"  value="Add contact">
+				<input class="inner" type="button"name="" id="update_contact"  value="Update">
+			</div>
+			
+		</form>
+	</div>
+	</div>
+	</div>
+	<!-- popup for showing each contact details -->
+	<div class="each-contact popup-contact">
+		<span class="close-popup">&times;</span>
+		<div>
+			<img src="images/phone.jpg" id="ctProfile" class="profile">
+		</div>
+		<table>
+			<tr><td>Name:</td><td id="ctName"></td></tr>
+			<tr><td>Phone:</td><td id="ctPhone"></td></tr>
+			<tr><td>Email:</td><td id="ctEmail"></td></tr>
+			<tr><td>Address:</td><td id="ctAddress"></td></tr>
+			<tr><td>Birthday:</td><td id="ctBirthday"></td></tr>
+		</table>
+		<div class="bottom-navbar">
+		<a href="#" class="bottom-nav-items" id="edit_contact"><img src="images/edit-icon.png" style="width: 20px"></a>
+		<a href=""  class="bottom-nav-items"><img src="images/share-icon.png" style="width: 20px"></a>
+		<a href=""  class="bottom-nav-items" id="favourite"><img src="images/star.png" style="width: 20px"></a>
+		<a href="#"  class="bottom-nav-items" id="delete"><img src="images/del-icon.png" style="width: 20px"></a>
+		</div>
+		
+	</div>
+	<!-- display user profile details -->
+	<div class="show-user-profile">
+		<span class="close_userdetails">&times;</span>
+		<table>
+			<th><h3>USER ACCOUNT</h3></th>
+			<tr><td>Full Name:</td><td id="profile_name"></td></tr>
+			<tr><td>Phone number:</td><td id="profile_phone"></td></tr>
+			<tr><td>Email:</td><td id="profile_email"></td></tr>
+			<tr><td>Password:</td><td><input type="password" name="" id="profile_password" value=""></td></tr>
+		</table>
+	</div>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="js/add_contacts.js"></script>
+
+<!-- <script type="text/javascript" src="js/profile.js"></script> -->
+
+</body>
+</html>

@@ -1,0 +1,420 @@
+.body{
+			font-family: "Tw Cen MT", sans-serif;
+		}
+
+		.heading1{
+			color: #ffff;
+			text-shadow: 1px 1px 2px #000000;
+			text-align: center;
+			font-family: "Tw Cen MT", sans-serif;
+			font-size: 25pt;
+			padding-top: 15px;
+		}
+
+		.heading2{
+			color: #ffff;
+			text-shadow: 1px 1px 2px #000000;
+			text-align: center;
+			font-family: "Tw Cen MT", serif;
+			font-size: 24pt;
+		}
+		.header{
+			background-color:#1d323f;
+			margin-top: 0;
+		}
+
+		.navbar{
+			width: 100%;
+			margin: 0 auto;
+			position: relative;
+			display: flex;
+			height: 50px;
+			top: 0;
+		}
+
+		.nav-items{
+			flex: 1;
+			color: white;
+			font-size: 15pt;
+			display: block;
+			text-align: center;
+			text-decoration: none;
+			top: 0;
+		}
+		
+		a:link {
+			color: white;
+			font-size: 14pt;
+		}
+		
+		a:hover {
+			color: #f58a25;
+		}
+		
+		a:active {
+			color:#f58a25;
+		}
+
+		.profile_pic{
+			height: 180px;
+			width: 180px;
+			position: relative;
+			overflow: hidden;
+			border-radius: 50%;
+			border: 2px solid white;
+			top: 50%;
+			left: 25%;
+			background-size: 100% 100%;
+
+		}
+
+		#photo{
+			border-radius: 50%;
+			height: 100%;
+			width: 100%;
+			overflow: hidden;
+		}
+
+		#file{
+			display: none;
+			
+			}
+
+	.uploadpic{
+		height: 45px;
+		width:100%;
+		position: absolute;
+		transform: translateX(-50%);
+		text-align: center;
+		bottom: 0;
+		left: 50%;
+		line-height: 30px;
+		cursor: pointer;
+		background-color: #1d323f;
+		color: white;
+		outline: none;
+		box-sizing: border-box;
+	}
+
+/*	create a modal*/
+.modal {
+    display: none; 
+    position: absolute; 
+    z-index: 1;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    top: 22%;
+    transform: translate(50%,0%);
+	background-color: #1d323f;
+
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    border: 1px solid #888;
+    width: 100%;
+  
+}
+label{
+	padding-left: 10px;
+	color: white;
+}
+.label_error{
+	text-align: left;
+	color: #f58a25;
+	padding-left: 15px;
+}
+
+.modal-content-elmnts{
+	outline: none;
+    padding:10px 5px;
+    width: 95%;
+    display: inline-block;
+	border-collapse: collapse;
+	margin-top: 2px;;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.content{
+	width: 50%;
+	height: 95%;
+	position: relative;
+	margin: 0 auto;
+	background-color: #ADD8E6;
+	border-radius: 5px;
+	border-color: gray;
+	border-width: 2px;
+	
+}
+
+/*searchbar*/
+.searchbar{
+	width: 85%;
+	height: 40px;
+	border-collapse: collapse;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 20px;
+	
+}
+
+/*buttons*/
+#outer
+{
+    width:100%;
+    text-align: center;
+}
+
+.inner
+{
+    display: inline-block;
+    height: 35px;
+    font-size: 12px;
+    margin: 4px 2px;
+    width: 100px;
+
+}
+
+.addcontact-btn{
+ border-radius: 50%;
+  background-color: #1d323f;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 2px 2px;
+  position: fixed;
+  right:25%;
+  bottom: 5%;
+}
+
+button:hover {
+	background-color: #f58a25;
+	color: white;
+}
+
+button:focus{
+	border-color:transparent;
+	outline:none;
+   }
+
+/*contact list*/
+.contactlist-items{
+	height: 3%;
+	width: 75%;
+    display: inline-block;
+	/* margin: 0.1em; */
+	margin-left:5%;
+	list-style-type: none;
+	font-size: 15pt;
+}
+
+.profile-pic-list{
+  border-radius: 50%;
+  height:75px;
+  width: 75px;
+  margin-left: 10px;
+}
+
+#profileImage-letter {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  background: #0c540c;
+  font-size: 3.5rem;
+  color: #fff;
+  text-align: center;
+  line-height: 10rem;
+  margin: 2rem 0;
+}
+
+.selectcontacts{
+ text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 4px 2px;
+  position: absolute;
+  right:5%;
+  
+}
+.contacts_div{
+	height: 100%;
+	background-color: rgb(153, 218, 218);
+	display: block;
+	position: fixed;
+	width: 50%;
+	margin: 0 auto;
+	border-color: gray;
+	border-width: 2px;
+	
+}
+#selectAll{
+text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 4px 2px;
+  position: absolute;
+  right:25%;
+  text-align: center;
+}
+
+/*bottom links on each contact*/
+.bottom-navbar{
+	 background-color: #333;
+	 overflow: hidden;
+	  position: relative;
+	  bottom: 0;
+	  display: flex;
+	  left: 0;
+		}
+
+		.bottom-nav-items{
+		  flex: 0.5;
+		  text-decoration:none;
+		  float: left;
+		  display: block;
+		  color: #f2f2f2;
+		  text-align: center;
+		  padding: 14px 14px;
+		  text-decoration: none;
+		  font-size: 12px;
+		}
+
+		.each-contact{
+			top: 22%;
+			left: 50%;
+			position: absolute;
+			transform: translate(-50%, 0%);
+			margin: 0 auto;
+			display: none; 
+		}
+
+		.popup-contact{
+			background-color:rgb(230, 220, 220);
+			justify-content: center;
+			align-items: center;
+			/*padding: 30px 20px;*/
+			overflow-y: visible;
+			border-color: white;
+			border: 1;
+			padding: 10px;
+			width: 350px;
+		}
+
+		.profile{
+			border-radius: 50%;
+			width: 100px;
+			margin:0 auto;
+			align-items: center;
+			display:block;
+		}
+
+		.close-popup {
+    color: rgb(248, 244, 244);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+	/*	account settings*/
+	.user-profile{
+		list-style: none;
+		color: black;
+		width: 90px;
+		box-sizing: 0 5px 25px;
+		border-radius:50%;
+		transition: 0.5s;
+		right: 0;
+
+	}
+
+	.user-profile li{
+		padding: 5px 0;
+		
+	}
+
+	a:link {
+		color: white;
+		font-size: 14pt;
+		text-decoration: none;
+	}
+   
+a:hover {
+	color: #f58a25;
+}
+
+a:active {
+	color: white;
+		font-size: 14pt;
+		text-decoration: none;
+} 
+	.profile-menu{
+		display: none;
+		right: 5px;
+		position: absolute;
+		top:5px;
+		background-color:#ADD8E6;
+		text-decoration: none;
+	}
+
+	.show-user-profile{
+		display: none;
+		/*width: 50%;*/
+		height: auto;
+		position: absolute;
+		transform: translate(50%,25%);
+		top:10%;
+		background-color:rgb(230, 220, 220);
+		margin: 0 auto;
+		padding: 20px;
+	}
+
+/*	close profile menu*/
+		.close_profile_menu {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*close user account details*/
+		.close_userdetails {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*remove favourite button*/
+.removeFavourite{
+	border-radius: 50%;
+	background-color: #1d323f;
+	border: none;
+	text-decoration: none;
+	padding:4px 5px;
+}
