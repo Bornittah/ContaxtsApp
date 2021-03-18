@@ -1,14 +1,14 @@
-var username = document.querySelector('#cont_fname').value;
-var fname = document.querySelector('#cont_lname').value;
-var lname = document.querySelector('#tel_code').value;
-var email = document.querySelector('#cont_phone').value;
-var addcontacts = document.querySelector('#contacts_save');
+let firstName = document.querySelector('#cont_fname');
+let lastname = document.querySelector('#cont_lname');
+let countryCode = document.querySelector('#tel_code');
+let telePhone = document.querySelector('#cont_phone');
+let addcontacts = document.querySelector('#contacts_save');
 const updatecontact=document.getElementById('update_contact');
 const API_URL="https://truly-contacts.herokuapp.com/api"
 //open modal
-var modal = document.getElementById('contact-modal');
-var openModal = document.getElementById('open_contactmodal');
-var span = document.getElementsByClassName("close")[0];
+let modal = document.getElementById('contact-modal');
+let openModal = document.getElementById('open_contactmodal');
+let span = document.getElementsByClassName("close")[0];
 openModal.onclick = function() {
 	modal.style.display = "block";
 	updatecontact.style.display="none";
@@ -48,21 +48,36 @@ const img_label=document.querySelector('#uploadpic');
 addcontacts.addEventListener('click', (e)=>{
 addcontacts.value="Saving data.."
 e.preventDefault();
+let contact_details={
+        // "photo":img,
+        "Firstname":firstName.value,
+        "Lastname":lastname.value,
+        "CountryCode":countryCode.value,
+        "Telephone": telePhone.value
+}
    fetch(`${API_URL}/contacts/`,
    {
-           method: "POST"
+           method: "POST",
+           headers: {
+            'Content-Type': "application/json",
+            'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IkJvcm5pIn0.aw5de6XIfZ2StUS42kZIlKLCznAmaMpe9eSZSZ9i_-8'
+         },
+           body:JSON.stringify(contact_details)
    }
    ).then((response)=>{
     response.json().then((data)=>{
+        console.log(contact_details)
         console.log("data", data)
         if(response.status===403){
-            addcontacts.value="Failed to save"
+            document.querySelector('#saving_status').innerHTML= "Contact not saved!";
             document.querySelector('#login_error').innerHTML= data.detail;
-            // document.querySelector('#for_fname').innerHTML=data.first_name;
-            // document.querySelector('#for_lname').innerHTML=data.last_name;
-            // document.querySelector('#for_code').innerHTML=data.country_code;
-            // document.querySelector('#for_phone').innerHTML=data.phone_number;
-            
+        }
+
+        if(response.status===400){
+            document.querySelector('#for_fname').innerHTML=data.first_name;
+            document.querySelector('#for_lname').innerHTML=data.last_name;
+            document.querySelector('#for_code').innerHTML=data.country_code;
+            document.querySelector('#for_phone').innerHTML=data.phone_number;
         }
     });
         
