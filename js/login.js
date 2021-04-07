@@ -27,6 +27,7 @@ loginbutton.addEventListener('click', (e)=>{
         }
         if(response.status===200){
             window.location="contacts.html";
+            localStorage.token=data.token;
         }
     });
         

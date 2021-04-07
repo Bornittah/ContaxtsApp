@@ -4,7 +4,8 @@ let countryCode = document.querySelector('#tel_code');
 let telePhone = document.querySelector('#cont_phone');
 let addcontacts = document.querySelector('#contacts_save');
 const updatecontact=document.getElementById('update_contact');
-const API_URL="https://truly-contacts.herokuapp.com/api"
+const API_URL="https://truly-contacts.herokuapp.com/api";
+
 //open modal
 let modal = document.getElementById('contact-modal');
 let openModal = document.getElementById('open_contactmodal');
@@ -46,15 +47,20 @@ const img_label=document.querySelector('#uploadpic');
  });
 
 addcontacts.addEventListener('click', (e)=>{
+    let contact_details={
+        // "photo":img,
+        "contact_picture":image.src,
+        "id":"",
+        "first_name":firstName.value,
+        "last_name":lastname.value,
+        "country_code":countryCode.value,
+        "phone_number": telePhone.value,
+        "is_favorite":true
+
+}
 addcontacts.value="Saving data.."
 e.preventDefault();
-let contact_details={
-        // "photo":img,
-        "Firstname":firstName.value,
-        "Lastname":lastname.value,
-        "CountryCode":countryCode.value,
-        "Telephone": telePhone.value
-}
+
    fetch(`${API_URL}/contacts/`,
    {
            method: "POST",
@@ -66,7 +72,7 @@ let contact_details={
    }
    ).then((response)=>{
     response.json().then((data)=>{
-        console.log(contact_details)
+
         console.log("data", data)
         if(response.status===403){
             document.querySelector('#saving_status').innerHTML= "Contact not saved!";
@@ -78,6 +84,9 @@ let contact_details={
             document.querySelector('#for_lname').innerHTML=data.last_name;
             document.querySelector('#for_code').innerHTML=data.country_code;
             document.querySelector('#for_phone').innerHTML=data.phone_number;
+        }
+        if(response.status===201){
+            modal.style.display = "none";
         }
     });
         
