@@ -22,7 +22,7 @@ window.addEventListener('load',()=>{
     // search bar
 function search_function(){
     const searchli=document.getElementById('searchcontacts');
-        let searchbar = searchli.value.toUpperCase();
+        let searchbar = searchli.value.toUpperCase(); 
         // console.log(searchbar);
         let contactlist = document.querySelector('#contactslists');
         let mysearch=contactlist.getElementsByTagName('tr');

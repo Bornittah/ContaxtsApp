@@ -1,6 +1,8 @@
 .body{
 			font-family: "Tw Cen MT", sans-serif;
-			overflow: auto;
+			overflow-y: scroll;
+			overflow-x: hidden;
+			height: 100%;
 		}
 
 		.heading1{
@@ -58,15 +60,15 @@
 		}
 
 		.profile_pic{
-			height: 180px;
-			width: 180px;
+			height: 100px;
+			width: 100px;
 			position: relative;
 			overflow: hidden;
 			border-radius: 50%;
 			border: 2px solid white;
 			top: 50%;
-			left: 25%;
 			background-size: 100% 100%;
+			margin: auto;
 
 		}
 
@@ -102,27 +104,30 @@
 /*	create a modal*/
 .modal {
     display: none; 
-    position: absolute; 
-    z-index: 1;
+    position: absolute;
     margin: auto;
     width: 50%;
-    padding: 10px;
-    top: 22%;
-    transform: translate(50%,0%);
+	height:auto;
+    padding:20px;
+    top:50%;
+	left:50%;
+     transform: translate(-50%,-50%);
 	background-color: #1d323f;
-
 }
 
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto;
-    border: 1px solid #888;
+	height:100%;
+    /* border: 1px solid #888; */
     width: 100%;
+	
   
 }
 label{
 	padding-left: 10px;
 	color: white;
+	padding-top:5px;
 }
 .label_error{
 	text-align: left;
@@ -132,11 +137,14 @@ label{
 
 .modal-content-elmnts{
 	outline: none;
-    padding:10px 5px;
+    padding:10px 2px;
     width: 95%;
-    display: inline-block;
+	height:100%;
+	margin: auto;
+	padding-left: 10px;
+	background-color: #ffffff;
 	border-collapse: collapse;
-	margin-top: 2px;;
+	border:0;
 }
 
 .close {
@@ -177,13 +185,8 @@ label{
 }
 
 /*buttons*/
-#outer
-{
-    width:100%;
-    text-align: center;
-}
 
-.inner
+.action-button
 {
     display: inline-block;
     height: 35px;

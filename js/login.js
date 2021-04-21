@@ -26,7 +26,8 @@ loginbutton.addEventListener('click', (e)=>{
             loginbutton.value="Try again!"
         }
         if(response.status===200){
-            window.location="contacts.html";
+            // window.location="addContactsbackup.html";
+            window.location="home.html";
             localStorage.token=data.token;
         }
     });

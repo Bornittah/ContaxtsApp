@@ -13,11 +13,10 @@ function display_contacts(){
     }
     ).then((response)=>{
      response.json().then((data)=>{
-        //  console.log("data", data)
-        //  console.log(data[0].first_name);
          let showDiv = document.querySelector('.listOfContacts');
          let contacts_length=document.querySelector('#numberOfContacts');
          if(data.length>0){
+			//  console.log(data[i].first_name)
              let appendTo = '<table id="contacts">';
              for (let i = 0; i < data.length; i++) {
                  appendTo += `<tbody><tr class="contactlist-items" id='${i}' onclick='viewContact(${i})'><td>
@@ -31,16 +30,22 @@ function display_contacts(){
              }else{
                  contacts_length.innerHTML=data.length + " Contacts";
              }
-                 
+              
          }else {
              // no contacts
              showDiv.innerHTML = "No saved contacts";
              contacts_length.innerHTML=data.length + " Contacts";
          }
-         if(response.status===201){}
-         if(response.status===403){}
+         if(response.status===201){
+			 
+		 }
+         if(response.status===403){
+			 
+		 }
  
-         if(response.status===400){}
+         if(response.status===400){
+
+		 }
      });
  
      }).catch((err)=>{
@@ -75,7 +80,7 @@ function viewContact(index){
             method: "GET",
             headers: {
              'Content-Type': "application/json",
-             'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IkJvcm5pIn0.aw5de6XIfZ2StUS42kZIlKLCznAmaMpe9eSZSZ9i_-8'
+             'Authorization': `Bearer ${localStorage.token}`
           }
     }
     ).then((response)=>{
@@ -115,7 +120,7 @@ function viewContact(index){
 					"last_name":lastname.value,
 					"phone_number": telePhone.value,
 					"contact_picture":image.src,
-					"is_favorite":true
+					"is_favorite":false
 						
 					}
 
@@ -127,7 +132,7 @@ function viewContact(index){
 				method: "PUT",
 				headers: {
 					'Content-Type': "application/json",
-					'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IkJvcm5pIn0.aw5de6XIfZ2StUS42kZIlKLCznAmaMpe9eSZSZ9i_-8'
+					'Authorization': `Bearer ${localStorage.token}`
 				},
 				body:JSON.stringify(data)
 		}
@@ -183,18 +188,20 @@ function viewContact(index){
 		//when favourate button is clicked
 		let addfavourite=document.getElementById("favourite");
 		addfavourite.onclick=function(){
-			let favourite_contact=JSON.parse(localStorage.getItem('Favourites'));
-			if(favourite_contact==null){
-				localStorage.setItem('Favourites', '[]');
-				let empty_fav=[];
-				empty_fav.push('empty');
-			}else{
-				modal.style.display = "none";
-				let new_favourite=JSON.parse(localStorage.getItem('Favourites'));
-				new_favourite.push(contact[id]);
-				localStorage.setItem('Favourites', JSON.stringify(new_favourite));
-				// console.log(new_favourite);
-			}
+			// let favourite_contact=JSON.parse(localStorage.getItem('Favourites'));
+			// if(favourite_contact==null){
+			// 	localStorage.setItem('Favourites', '[]');
+			// 	let empty_fav=[];
+			// 	empty_fav.push('empty');
+			// }else{
+			// 	modal.style.display = "none";
+			// 	let new_favourite=JSON.parse(localStorage.getItem('Favourites'));
+			// 	new_favourite.push(data[id]);
+			// 	localStorage.setItem('Favourites', JSON.stringify(new_favourite));
+			// 	// console.log(new_favourite);
+			// }
+			let fav = data[id].is_favorite===true
+			console.log(fav)
 			   
 		}
 	});
@@ -206,3 +213,27 @@ function viewContact(index){
 window.addEventListener('load', ()=>{
 	display_contacts();
 });
+
+
+    // search bar
+	function search_function(){
+		const searchli=document.getElementById('searchcontacts');
+			let searchbar = searchli.value.toUpperCase();
+			// console.log(searchbar);
+			let contactlist = document.querySelector('#contacts');
+			let mysearch=contactlist.getElementsByTagName('tr');
+		
+			for (let i = 0; i < mysearch.length; i++) {
+				let searchResult=mysearch[i].getElementsByTagName('td')[1];
+				if(searchResult){
+					let searchvalue=searchResult.textContent || searchResult.innerHTML;
+					if(searchvalue.toUpperCase().indexOf(searchbar) > -1){
+						mysearch[i].style.display="";
+		
+					}else{
+						mysearch[i].style.display="none";
+					}
+				}
+				
+			}
+		}

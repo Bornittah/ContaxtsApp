@@ -1,58 +1,79 @@
+
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Contaxts</title>
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <title>Contaxts</title>
+        <link rel="stylesheet" type="text/css" href="css/home.css">
+        <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+    </head>
+    <body>
+        <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+        <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+      
+        <!-- <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script> -->
+        <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-
-</head>
-</head>
-<body class="body">
-		<div class="content">
-			<div style="background-color:#1d323f; ">
-				<section><h1 class="heading1">CONTAXTS</h1></section>
-				<!-- top bar menu -->
-				<div class="navbar"> 
-					<a href="contacts.html"  class="nav-items">Contacts</a>
-					<a href="favourites.html"  class="nav-items">Favourites</a>
-					<a href="search.html" class="nav-items opensearch"><img src="images/search-icon.jpg" style="width: 30px"></a>
-					<!-- <a href="#"  class="nav-items"><input type="checkbox"></a> -->
-					<a href="#" onclick="profile_menu();" class="nav-items"><img src="images/phone.jpg" style="width:60px; border-radius:50%; background-color:#6838;"></a>
-				</div> 
-			   <!-- profile menu -->
-			   <div class="profile-menu">
-				   <span class="close_profile_menu">&times;</span>
-					<ul class="user-profile">
-					<li><a href="#" onclick="myprofile()"  class="">My profile</a></li>
-					<li><a href="" class="">Logout</a></li>
-					</ul>
+        <div class="wrapper">
+            <div class="sidebar-menu">
+                <nav>
+                    <div class="profile-menu">
+                        <span class="close_profile_menu">&times;</span>
+                        <ul class="user-profile">
+                            <li><a href="#" onclick="myprofile()" class="">My profile</a></li>
+                            <li><a href="index.html" class="logout">Logout</a></li>
+                        </ul>
+                   </div>
+                    <ul>
+                        <li><a class="addcontact-btn" id="open_contactmodal"><img src="images/add-icon.png" style="width: 20px"></a></li>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="contactsList.html`" >Contacts</a></li>
+                        <li><a href="favourites.html">Favourites</a></li>
+                        <li><a href="favourites.html">My profile</a></li>
+                        <li><a href="favourites.html">About Contaxts</a></li>
+                        <li><a href="favourites.html">Log out</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="content">
+                <div class="container">
+              <div class="top-bar">
+                <div class="top-menu">
+                    <nav>
+                        <ul>
+                            <li><h1>CONTAXTS</h1></li>
+                            <li><a href="search.html" class="nav-items opensearch"></a>
+                                <input class="searchbar" onkeyup ="search_function()" autofocus="on" type="text" id="searchcontacts" placeholder="Search...">
+                            </li>
+                        </ul>
+                    </nav>
+                  </div>
+              </div>
+              <!-- content -->
+              <div class="sub-content">
+				<div id="myfavourites">
+					<p id="noContacts" style="display:none;">No contacts found!</p>
 				</div>
+						<!-- display user profile details -->
+				<div class="show-user-profile">
+					<span class="close_userdetails">&times;</span>
+					<table>
+						<th><h3>USER ACCOUNT</h3></th>
+						<tr><td>Full Name:</td><td id="profile_name"></td></tr>
+						<tr><td>Phone number:</td><td id="profile_phone"></td></tr>
+						<tr><td>Email:</td><td id="profile_email"></td></tr>
+						<tr><td>Password:</td><td><input type="password" name="" id="profile_password" value=""></td></tr>
+					</table>
 				</div>
-		<!-- <div>
-			<input class="searchbar" onkeyup ="search_function()" autofocus="on" type="text" id="searchcontacts" placeholder="Search...">
-	   </div> -->
-	<div id="myfavourites">
-		<p id="noContacts" style="display:none;">No contacts found!</p>
+</div>
 	</div>
-			<!-- display user profile details -->
-	<div class="show-user-profile">
-		<span class="close_userdetails">&times;</span>
-		<table>
-			<th><h3>USER ACCOUNT</h3></th>
-			<tr><td>Full Name:</td><td id="profile_name"></td></tr>
-			<tr><td>Phone number:</td><td id="profile_phone"></td></tr>
-			<tr><td>Email:</td><td id="profile_email"></td></tr>
-			<tr><td>Password:</td><td><input type="password" name="" id="profile_password" value=""></td></tr>
-		</table>
-	</div>
-
-	</div>
-
-	<script type="text/javascript" src="js/favourites.js"></script>
-
-	<script type="text/javascript" src="js/profile.js"></script>
-
-</body>
+</div>
+</div>
+</div>
+</div>
+        <script src="/__/firebase/8.3.1/firebase-app.js"></script>
+        <script src="/__/firebase/8.3.1/firebase-database.js"></script>
+    <script type="text/javascript" src="js/favourites.js"></script>
+    <!-- <script type="text/javascript" src="js/fetch_contacts.js"></script> -->
+    </body>
 </html>

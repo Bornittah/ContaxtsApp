@@ -1,0 +1,18 @@
+.my-profile{
+    margin: auto;
+    width: 75%;
+    top: 100px;
+    padding-top: 20%;
+    background-color: #fff;
+    display: flex;
+    position: relative;
+}
+.my-profile-col{
+    flex: 50%;
+    text-align: center;
+    border-radius: 20px;
+    padding: 60px;
+    background-color: #fff;
+    font-size: large;
+    margin: 20px;
+}

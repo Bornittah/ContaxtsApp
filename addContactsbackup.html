@@ -88,7 +88,6 @@
 			<label for="file" class="uploadpic" id="uploadpic">Choose photo</label>
 		    </div>
 			<div><p style="text-align: center;"><span id="login_error" class="label_error"></p></div>
-			
 			<div>
 				<label>First Name<span id="for_fname" class="label_error"></span></label>
 				<input class="modal-content-elmnts" type="text" name="" id="cont_fname">
@@ -105,8 +104,8 @@
 				<label>Telephone<span id="for_phone" class="label_error"></span></label>
 				<input class="modal-content-elmnts" type="text" name="" id="cont_phone">
 			</div>
-				<input class="inner" type="submit"name="" id="saveContacts"  value="Add contact">
-				<input class="inner" type="button"name="" id="updateContacts"  value="Update">
+				<input class="action-button" type="submit" name="" id="saveContacts"  value="Add contact">
+				<input class="action-button" type="button" name="" id="updateContacts"  value="Update">
 				<p style="text-align: center;"><span id="saving_status" class="label_error"></p>
 			</div>
 			
@@ -157,146 +156,14 @@
 	<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script>
   
   
-  <script>
-	// Your web app's Firebase configuration
-	var firebaseConfig = {
-	  apiKey: "AIzaSyCWgi8w2yoYXagg-QxopN03HtGMLsKMtOQ",
-	  authDomain: "projectapplication-8be05.firebaseapp.com",
-	  databaseURL: "https://projectapplication-8be05.firebaseio.com",
-	  projectId: "projectapplication-8be05",
-	  storageBucket: "projectapplication-8be05.appspot.com",
-	  messagingSenderId: "505061046411",
-	  appId: "1:505061046411:web:7ba970d3eca865adcd3c8e"
-	};
-	// Initialize Firebase
-	firebase.initializeApp(firebaseConfig);
-	// console.log(firebase);
-	let ref=firebase.database().ref("Contacts");
-  
-  let firstName = document.querySelector('#cont_fname');
-  let lastname = document.querySelector('#cont_lname');
-  let countryCode = document.querySelector('#tel_code');
-  let telePhone = document.querySelector('#cont_phone');
-  let addcontacts = document.querySelector('#saveContacts');
-  const updatecontact=document.getElementById('updateContacts');
-  // const API_URL="https://truly-contacts.herokuapp.com/api";
-  
-  // upload aprofile picture
-// declaring profile pic html elements
-const imagediv=document.querySelector('.profile_pic');
-const image=document.querySelector('#photo');
-const file=document.querySelector('#file');
-const img_label=document.querySelector('#uploadpic');
- // when a file is chosen
- file.addEventListener('change', function(e){
-	e.preventDefault();
- 	const img=this.files[0];
- 	if(img){
- 		const reader = new FileReader();
- 		reader.addEventListener('load', function(){
- 			image.setAttribute('src', reader.result);
- 		});
- 		reader.readAsDataURL(img);
- 	}
-
-
- });
-//  upload task
-let imagePath=image.src;
-var imageName = imagePath.replace(/^.*[\\\/]/, '')
-let uploadTask = firebase.storage().ref('Images/'+ imageName).put(file);
-uploadTask.on('stateCnaged', function(snapshot){
-	console.log("uploading");
-},
-function(error){
-	console.log("error in saving image");
-}, 
-function(){
-uploadTask.getDownloadURL.then(function(url){
-	console.log(url);
-	addcontacts.addEventListener('click', (e)=>{
-	  let contact_details={
-		  "contact_picture":image.src,
-		  "id":"",
-		  "first_name":firstName.value,
-		  "last_name":lastname.value,
-		  "country_code":countryCode.value,
-		  "phone_number": telePhone.value,
-		  "is_favorite":true
-  
-  }
-  addcontacts.value="Saving data.."
-  e.preventDefault();
-	  ref.push(contact_details);
-  });
-})
-});
-				
-  
-//   addcontacts.addEventListener('click', (e)=>{
-// 	  let contact_details={
-// 		  "contact_picture":image.src,
-// 		  "id":"",
-// 		  "first_name":firstName.value,
-// 		  "last_name":lastname.value,
-// 		  "country_code":countryCode.value,
-// 		  "phone_number": telePhone.value,
-// 		  "is_favorite":true
-  
-//   }
-//   addcontacts.value="Saving data.."
-//   e.preventDefault();
-// 	  ref.push(contact_details);
-//   });
-  function fetchdata(){
-	ref.on('value', function(snapshot){
-		snapshot.forEach(
-			function(ChildSnapshot){
-				let name = ChildSnapshot.val().first_name;
-				let pic = ChildSnapshot.val().contact_picture;
-				console.log(name)
-
-			}
-		);
-  });
-}
-
-window.addEventListener('load',()=>{
-	fetchdata();
-				});
-  </script>
+ <script src="js/add_contacts.js"></script>
 
 <script>
-	//open modal
-let modal = document.getElementById('contactModal');
-let openModal = document.getElementById('add_contactmodal');
-let span = document.getElementsByClassName("close")[0];
-openModal.onclick = function() {
-	modal.style.display = "block";
-	updatecontact.style.display="none";
-	addcontacts.style.display="block"
-    console.log("hey")
-}
-span.onclick = function() {
-    modal.style.display = "none";
-}
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-} 
-// display contact
+
 
 
 </script>
 <script src="/__/firebase/8.3.1/firebase-app.js"></script>
-
-<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-<!-- <script src="/__/firebase/8.3.1/firebase-analytics.js"></script> -->
-
-<!-- Add Firebase products that you want to use -->
-<!-- <script src="/__/firebase/8.3.1/firebase-auth.js"></script>
-<script src="/__/firebase/8.3.1/firebase-firestore.js"></script> -->
 <script src="/__/firebase/8.3.1/firebase-database.js"></script>
 </body>
 </html>
