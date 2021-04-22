@@ -1,7 +1,7 @@
 
-const API="https://truly-contacts.herokuapp.com/api"
-
-function display_contacts(){
+const API="https://truly-contacts.herokuapp.com/api";
+let contacts_length=document.querySelector('#numberOfFavorites');
+function displayFavorites(){
 
     fetch(`${API}/contacts/`,
     {
@@ -20,17 +20,17 @@ function display_contacts(){
             for (var i = 0; i < data.length; i++) {
                 if(data[i].is_favorite===true){
                 append += `<tr class="contactlist-items"><td><button class="removeFavourite"><img src="images/remove-icon.png"  id='remove_fav' onclick='delete_fav(${i})'style="width: 20px"></button></td><td style="text-align:center; margin:0 auto;">
-                <img class="profile-pic-list" src="${data[i].Profile}"></td><td> ${data[i].Name}
-                </td></tr>`;
+                <img class="profile-pic-list" src="${data[i].contact_picture}"></td><td> ${data[i].first_name}<br>${data[i].phone_number}</td></tr>`;
             }
+
             }
             favouriteList.innerHTML =append+"</table>";
      
              //show number of saved contacts
              if(data.length==1){
-                 contacts_length.innerHTML=data.length + " Contact";
+                 contacts_length.innerHTML=`${data.length}  Contact`;
              }else{
-                 contacts_length.innerHTML=data.length + " Contacts";
+                 contacts_length.innerHTML=`${data.length}  Contacts`;
              }
               
          }else {
@@ -55,6 +55,11 @@ function display_contacts(){
         });
 
 }
+window.addEventListener('load',()=>{
+    displayFavorites();
+
+    });
+
 // window.addEventListener('load',()=>{
 //     var fav=JSON.parse(localStorage.getItem('Favourites'));
 //     var cl = document.querySelector('#myfavourites');

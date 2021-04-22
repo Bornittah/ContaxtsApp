@@ -9,10 +9,8 @@
 }
 
 .row{
-    /* box-sizing: border-box; */
     width: 50%;
-    margin: 0 auto;
-    top: auto;
+    margin: auto;
     height: 80%; 
     display:block;
 
@@ -24,30 +22,19 @@
 .highlight{
     text-align: center;
 }
-.first-col{
-    float: left;
-    width: 40%;
-    text-align: center;
-    height: 100%;
-    background-color: aquamarine;
-    display: flex;
-    justify-content: center;
-}
+
 
 .form{
-	height: auto;
+	/* height: auto; */
 	position: relative;
 	box-sizing: border-box;
 	background-color: #1d323f;
 	display: inline-block;
 	margin: auto 0;
     color: #fff;
-    width: 80%;
-    height: 30%;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 70px;
-    padding-right: 70px;
+    width: 100%;
+    height: 50%;
+    padding:15px 70px;
     
 }  
 
@@ -55,7 +42,9 @@
 display: block;
 margin: 0 auto;
 }
-
+.form-row{
+    padding-top:10px;
+}
 .heading1{
     color: #ffff;
     text-shadow: 1px 1px 2px #000000;
@@ -75,33 +64,33 @@ margin: 0 auto;
 .input{
 			height: 40px;
 			width: 100%;
-			padding: 12px;
-			margin-bottom: 5px;
+			padding: 15px;
 			border-collapse: collapse;
 			border:none;
 			outline: none;
 			border: none;
-			/* color: #1b75bc; */
 			border-top: 0;
             padding-left:15px;
             
 		}
 		
 		.submit_btn{
-            width: 90%;
-            padding-top: 10px;
-            padding-bottom: 10px;
+            width: 70%;
+            margin-top: 10px;
+            margin-bottom: 10px;
 			border:none;
 			border-radius: 7px;
 			border-collapse: collapse;
 			text-align: center;
             font-size: 12pt;
             background-color:   #0baa88;
+            padding: 10px 10px;
         }
         .btn_div{
-            /* margin: auto 0; */
-            padding-left: 60px;
-            width: auto;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin: 0 auto;
+            text-align: center;
         }
 
         .submit_btn:hover {
@@ -109,7 +98,7 @@ margin: 0 auto;
             color: white;
         }
 
-		.div{
+		.other-links{
 			padding-top: 5px;
             padding-bottom: 5px;
             margin: 0 auto;
@@ -117,17 +106,17 @@ margin: 0 auto;
             
         }
         
-        a:link {
+        .other-links a {
             color: #0baa88;
             font-size: 14pt;
             text-decoration: none;
         }
        
-    a:hover {
+   .other-links a:hover {
         color: #f58a25;
     }
     
-    a:active {
+   .other-links a:active {
         color: #0baa88;
             font-size: 14pt;
             text-decoration: none;
@@ -140,4 +129,65 @@ margin: 0 auto;
         color: #f58a25;
         padding-left: 15px;
     }
+@media(max-width:991px){
+    .row{
+        width:100%;
+        margin: 0 auto;
+        top: auto;
+        height:100%; 
+        display:block;
+    
+    }
+    .form{
+        /* height: auto; */
+        position: relative;
+        box-sizing: border-box;
+        background-color: #1d323f;
+        display: inline-block;
+        margin: auto 0;
+        color: #fff;
+        width: 100%;
+        height:100%;
+        padding:15px 40px;
+        
+    }
+    .submit_btn{
+        width: 70%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border:none;
+        border-radius: 7px;
+        border-collapse: collapse;
+        text-align: center;
+        font-size: 12pt;
+        background-color:   #0baa88;
+        padding: 10px 10px;
+    }
+    .submit_btn:hover {
+        background-color:#f58a25;
+        color: white;
+    }
+    .other-links a {
+        color: #0baa88;
+        font-size: 14pt;
+        text-decoration: none;
+    }
    
+.other-links a:hover {
+    color: #f58a25;
+}
+
+.other-links a:active {
+    color: #0baa88;
+        font-size: 14pt;
+        text-decoration: none;
+} 
+label{
+    padding-left: 10px;
+}
+.label_error{
+    text-align: left;
+    color: #f58a25;
+    padding-left: 15px;
+}
+}

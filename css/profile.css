@@ -1,18 +1,73 @@
+h3{
+    text-align: center;
+}
 .my-profile{
     margin: auto;
-    width: 75%;
-    top: 100px;
-    padding-top: 20%;
+    width: 90%;
+    /* top: 80px; */
+    height: 100%;
     background-color: #fff;
     display: flex;
     position: relative;
 }
+
 .my-profile-col{
     flex: 50%;
-    text-align: center;
+    text-align: left; 
     border-radius: 20px;
-    padding: 60px;
+    padding: 60px 0px;
     background-color: #fff;
     font-size: large;
     margin: 20px;
+}
+.my-profile-col table{
+    border-bottom: 1px, solid white;
+}
+.my-profile-coltable tr{
+    border-bottom: 1px, solid white;
+}
+.my-profile-col table td{
+        /* color: white; */
+        padding: 15px;
+        text-align: left;
+}
+.profilePicture{
+    height: 100%;
+    width: 60%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-size: 100% 100%;
+    margin: auto;
+
+}
+
+#photo{
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: #97ac99;
+}
+
+#file{
+    display: none;
+    
+    }
+
+.uploadImage{
+height: 45px;
+width:100%;
+position: absolute;
+transform: translateX(-50%);
+text-align: center;
+bottom: 0;
+left: 50%;
+line-height: 30px;
+cursor: pointer;
+background-color: #1d323f;
+color: white;
+outline: none;
+box-sizing: border-box;
 }
