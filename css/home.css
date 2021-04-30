@@ -3,21 +3,23 @@
     padding: 0;
 }
 body{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    /* background-color: #ADD8E6; */
+    font-family: Ubuntu, 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    font-size: 12px;
 }
+
 .wrapper{
     display: inline;
 }
 .content{
     display: block;
     position: fixed;
-    height: 100%;
+    height: 100%; 
     width: 80%;
     background-color: rgba(212, 243, 235, 0.719);
     margin-left: 20%;
     
 }
+
 .sidebar-menu{
     width: 20%;
     background-color: #1d323f;
@@ -27,15 +29,22 @@ body{
     overflow-y: auto;
     overflow-x: hidden;
 }
+.sidebar-menu h1{
+    color: #f58a25;
+    margin-top: 10%;
+    text-align: center;
+    font-size: 30pt;
+}
+
 .sidebar-menu nav{
- margin-top: 30%;
+ margin-top: 40%;
  width: 100%;
    
 }
 .sidebar-menu nav ul{
     width: 200px;
     height: 100%;
-    margin-left: 80px;
+    margin-left: 10px;
 }
 .sidebar-menu nav ul li{
     list-style-type: none;
@@ -46,17 +55,19 @@ body{
 }
 .sidebar-menu nav ul li a{
     text-decoration: none;
-    color: white;
+    color: rgba(212, 243, 235, 0.719);
     font-size: 15pt;
     display:inline-block;
    
 }
-.sidebar-menu nav ul li a.ctive{
+.sidebar-menu nav ul li a:ctive{
     text-decoration: none;
-    color: white;
+    color: rgba(212, 243, 235, 0.719);
     font-size: 15pt;
     display: inline-block;
-    background-color: #f2ff24;
+}
+.sidebar-menu nav ul li a:hover{
+    color: #f58a25;
 }
 .container{
     display: flex; 
@@ -86,20 +97,21 @@ body{
     height: auto;
     padding: 20px;
     box-shadow: #aaa;
-    /* margin: auto; */
     top: 0;
+    display: inline;
 }
   
 nav{
-    float:right; 
+    float:left; 
     margin-right: 50px;
     margin-top: 0;
+    
 }
 
 nav ul li{
     display: inline-block;
     list-style-type: none;
-    padding:5px 150px;
+    padding:10px 25px;
     text-align: center;
     
 }
@@ -110,58 +122,43 @@ nav ul li a{
     display: inline-block;
 }
 
-
-.profile-menu{
-    display: none;
-    right: 5px;
-    position: absolute;
-    top:5px;
-    background-color:#ADD8E6;
+nav ul li input{
     text-decoration: none;
+    display: inline-block;
+    width: 450px;
+    border-radius: 20px;
+    outline: 0;
+    border-color:#aaa;
+    padding: 10px;
+    border:0.2px solid #f58a25;;
 }
-
-.show-user-profile{
-    display: none;
-    /*width: 50%;*/
-    height: auto;
-    position: absolute;
-    transform: translate(50%,25%);
-    top:10%;
-    background-color:rgb(230, 220, 220);
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/*	close profile menu*/
-    .close_profile_menu {
-color: #aaa;
-float: right;
-font-size: 28px;
-font-weight: bold;
-text-decoration: none;
-cursor: pointer;
-}
-
-/*close user account details*/
- .close_userdetails {
-color: #aaa;
-float: right;
-font-size: 28px;
-font-weight: bold;
-text-decoration: none;
-cursor: pointer;
-}
-
-.addcontact-btn{
+ .top-menu figure{
+    float: right;
+    width: 100px;
+    text-decoration: none;
+    margin-right:10%;
     border-radius: 50%;
-     background-color: #1d323f;
+    text-align: center;
+}
+.top-menu figure img{
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+#caption{
+    text-align: center;
+}
+.addcontact-btn{
+    border-radius: 15px;
+    background-color: #1d323f;
      border: none;
-     padding: 15px;
-     border: 2px solid white;
+     padding: 10px;
+     width: auto;
+     outline: 0;
    }
    .addcontact-btn:hover {
-	background-color: #f58a25;
-	color: white;
+	color: #f58a25;
 }
 
 .addcontact-btn:focus{
@@ -169,42 +166,12 @@ cursor: pointer;
 	outline:none;
    }
 
-   /* welcome */
-   .welcome-row{
-       margin:auto;
-       width: 60%;
-       position: relative;
-       display: flex;
-      
-
-   }
-   .welcome-column{
-    flex: 50%;
-    text-align: center;
-    border-radius: 20px;
-    padding: 60px;
-    background-color: #fff;
-    font-size: large;
-    margin: 20px;
-}
 .listOfContacts{
     overflow: auto;
     width: 100%;
     display: block;
     position: relative;
     height: 100%;
-}
-/*searchbar*/
-.searchbar{
-	width: 100%;
-	height: 25px;
-    /* border-radius: 20px; */
-    /* border-width:1px;
-    background-color: #aaa; */
-	/* margin-left: 5%;
-	margin-right: 5%;
-	margin-top: 20px; */
-	
 }
 
 .profile_pic{
@@ -266,31 +233,34 @@ box-sizing: border-box;
     background-color: #fefefe;
     margin: 15% auto;
 	height:100%;
-    /* border: 1px solid #888; */
     width: 100%;
-	
-  
+
 }
 label{
-	padding-left: 10px;
+	padding-left: 0;
 	color: white;
-	padding-top:5px;
+	
 }
 .label_error{
 	text-align: left;
 	color: #f58a25;
 	padding-left: 15px;
 }
-
+.form-row{
+    margin-top:10px;
+}
+.form-row label{
+padding:0;
+color: rgba(212, 243, 235, 0.719);
+}
 .modal-content-elmnts{
 	outline: none;
     padding:10px 2px;
     width: 95%;
 	height:100%;
-	margin: auto;
-	padding-left: 10px;
-	background-color: #ffffff;
-	border-collapse: collapse;
+	margin-top:5px;
+	background-color: rgba(212, 243, 235, 0.719);
+	outline: 0;
 	border:0;
 }
 
@@ -310,10 +280,18 @@ label{
 .action-button
 {
     display: inline-block;
-    height: 35px;
-    font-size: 12px;
-    margin: 4px 2px;
-    width: 100px;
+    border-radius: 15px;
+    background-color: #0baa88;
+     border: none;
+     padding: 10px;
+     width: 100px;
+     outline: 0;
+     font-weight: 400;
+}
+.action-button:hover
+{
+    font-weight: 400;
+    color: #f57b09;
 }
 
 /*contact list*/
@@ -445,13 +423,13 @@ text-decoration: none;
 		}
 
 		.close-popup {
-    color: rgb(248, 244, 244);
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    text-decoration: none;
-    cursor: pointer;
-}
+            color: rgb(248, 244, 244);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+        }
 
 	/*	account settings*/
 	.user-profile{
@@ -533,4 +511,16 @@ a:active {
 	border: none;
 	text-decoration: none;
 	padding:4px 5px;
+}
+@media(max-width:991px){
+    nav ul li input{
+        text-decoration: none;
+        display: inline-block;
+        width: 250px;
+        border-radius: 20px;
+        outline: 0;
+        border-color:#aaa;
+        padding: 10px;
+        border:0.2px solid #f58a25;;
+    }
 }

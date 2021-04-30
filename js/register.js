@@ -43,8 +43,7 @@
 					
 				}
 				if(response.status===201){
-					// window.location="contacts.html"
-					window.location="index.html";
+					window.location="login.html";
 
 				}
 			});

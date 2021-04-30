@@ -1,40 +1,148 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Contaxt</title>
+    <head>
+        <title>Contaxts</title>
+        <link rel="stylesheet" type="text/css" href="css/home.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
+         
+    </head>
+    <body>
+        <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <div class="wrapper">
+            <div class="sidebar-menu">
+                <h1>Contaxts</h1>
+                <nav>
+                    <ul>
+                        <li><a href="index.html" >Contacts</a></li>
+                        <li><a href="favourites.html">Favourites</a></li>
+                        <li><a href="aboutApp.html">About Contaxts</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="content">
+               <div class="container">
+              <div class="top-bar">
+                <div class="toggle-btn" onclick="toggle_menu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="top-menu"> 
+                    <nav>
+                        <ul>
+                            <li><a class="addcontact-btn" id="open_contactmodal">Add contact</a></li>
+                            <li>
+                                <input class="searchbar" onkeyup ="search_function()" autofocus="on" type="text" id="searchcontacts" placeholder="Search contact...">
+                            </li>
+                        </ul>
+                    </nav> 
+                    <figure>
+                        <img id="avatar" alt="Avatar">
+                        <figcaption id="caption"></figcaption>
+                    </figure>
 
-	<link rel="stylesheet" type="text/css" href="css/login_page.css">
-	
-</head>
-<body class="body">
-	<div class="row">
-		<div class="form-div ">
-                <form class="form"  method="GET" id="login_form">
-					<h1 class="heading1">CONTAXTS</h1>
-					<p class="highlight">Keep track of contact information of people<br> in your circle eg phone numbers with this app</p>
-					<div class="line"></div>
-					<div><p class="highlight">Login to access your account</p></div>
-					<div><p style="text-align: center;"><span id="login_error" class="label_error"></p></div>
-					<div class="form-row">
-						<label>User Name<span id="foruser_name" class="label_error"></span></label><br>
-						<input type="text" class="input" id="user_name"  autofocus="on" >
-					</div>
-					<div class="form-row">
-						<label> Password<span id="forpass_word" class="label_error"></span></label><br>
-						<input type="password" class="input" id="pass_word" >
-					</div>
-					<div class="form-row btn_div"><input type="submit" class="submit_btn"  id="loginbutton" value="Login"></div>
-					<div>
-						<div class="other-links">
-							<a href="#">Forgot password?</a> |
-							<a href="register.html">Sign up</a> 
-						</div>
-					</div>
-		</form>
+                    <!-- <div class="profile-menu">
+                        <span class="close_profile_menu">&times;</span>
+                        <ul class="user-profile">
+                            <li><a href="#" onclick="myprofile()" class="">My profile</a></li>
+                            <li><a href="login.html" class="logout">Logout</a></li>
+                        </ul>
+                   </div> -->
+                  </div>
+              </div>
+              <!-- content -->
+              <div class="sub-content">
+              <div  class="selectcontacts">
+                <p id="numberOfContacts"></p>
+            </div>
+                <div class="listOfContacts"></div>
+
+                
+              <!-- add contacts modal -->
+                <div id="contact-modal" class="modal">
+                <div class="model-content">
+                <span class="close">&times;</span>
+                <form method="POST">
+                    <div class="profile_pic ">
+                    <img src="" id="photo">
+                    <input type="file" name="profilepic" id="file">
+                    <label for="file" class="uploadpic" id="uploadpic">Choose photo</label>
+                    </div>
+                    <div class="form-row"><p style="text-align: center;"><span id="login_error" class="label_error"></p></div>
+                    <div class="form-row">
+                        <label>First Name<span id="for_fname" class="label_error"></span></label>
+                        <input class="modal-content-elmnts" type="text" name="" id="cont_fname">
+                    </div>
+                    <div class="form-row">
+                        <label>Last Name<span id="for_lname" class="label_error"></span></label>
+                        <input class="modal-content-elmnts" type="text" name="" id="cont_lname">
+                    </div>
+                    <div class="form-row">
+                        <label>Country Code<span id="for_code" class="label_error"></span></label>
+                        <select  class="modal-content-elmnts" id="tel_code"></select>
+                    </div>
+                    <div class="form-row">
+                        <label>Telephone<span id="for_phone" class="label_error"></span></label>
+                        <input class="modal-content-elmnts" type="text" name="" id="cont_phone">
+                    </div>
+                    <div class="form-row"></div>
+                        <input class="action-button" type="submit"name="" id="contacts_save"  value="Add contact">
+                        <input class="action-button" type="button"name="" id="update_contact"  value="Update">
+                        <p style="text-align: center;"><span id="saving_status" class="label_error"></p>
+                    </div>
+                </div>
+                    
+                </form>
+            </div>
+           
+
+            <!-- popup for showing each contact details -->
+	<div class="each-contact">
+		<span class="close-popup">&times;</span>
+		<div>
+			<img src="" id="contactPicture" class="profile">
 		</div>
+		<table>
+			<tr><td>First Name:</td><td id="firstName"></td></tr>
+			<tr><td>Last Name:</td><td id="lastName"></td></tr>
+			<tr><td>Country Code:</td><td id="countryCode"></td></tr>
+			<tr><td>Phone Number:</td><td id="phoneNumber"></td></tr>
+			<!-- <tr><td>Birthday:</td><td id="ctBirthday"></td></tr> -->
+		</table>
+		<div class="bottom-navbar">
+		<a href="#" class="bottom-nav-items" id="edit_contact"><img src="images/edit-icon.png" style="width: 20px"></a>
+		<a href=""  class="bottom-nav-items"><img src="images/share-icon.png" style="width: 20px"></a>
+		<a href=""  class="bottom-nav-items" id="favourite"><img src="images/star.png" style="width: 20px"></a>
+		<a href="#"  class="bottom-nav-items" id="delete"><img src="images/del-icon.png" style="width: 20px"></a>
+		</div>
+		
 	</div>
-	<script type="text/javascript" src="js/login.js"></script>
-</body>
+	<!-- display user profile details -->
+	<div class="show-user-profile">
+		<span class="close_userdetails">&times;</span>
+		<table>
+			<th><h3>USER ACCOUNT</h3></th>
+			<tr><td>Full Name:</td><td id="profile_name"></td></tr>
+			<tr><td>Phone number:</td><td id="profile_phone"></td></tr>
+			<tr><td>Email:</td><td id="profile_email"></td></tr>
+			<tr><td>Password:</td><td><input type="password" name="" id="profile_password" value=""></td></tr>
+		</table>
+	</div>
+</div>
+	</div>
+</div>
+</div>
+        <script src="/__/firebase/8.3.1/firebase-app.js"></script>
+        <script src="/__/firebase/8.3.1/firebase-database.js"></script>
+
+        <script type="text/javascript" src="js/avatar.js"></script>
+        <script type="text/javascript" src="js/add_contacts.js"></script>
+        <script type="text/javascript" src="js/fetch_contacts.js"></script>
+        <script type="text/javascript" src="js/country-codes.js"></script>
+    </body>
 </html>

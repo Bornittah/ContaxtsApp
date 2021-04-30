@@ -139,18 +139,18 @@ function viewContact(index){
 		).then((response)=>{
 			response.json().then((data)=>{
 
-				
 				if(response.status===201){
 					// display_contacts();
 					console.log("data", data)
 					modal.style.display = "none";
+					display_contacts();
 				}
 				if(response.status===403){
 					document.querySelector('#saving_status').innerHTML= "Contact not saved!";
 					document.querySelector('#login_error').innerHTML= data.detail;
 				}
 				if(response.status===404){
-					console.log(data.details);
+					console.log(data.detail);
 				}
 				if(response.status===400){
 					document.querySelector('#for_fname').innerHTML=data.first_name;
@@ -176,13 +176,48 @@ function viewContact(index){
 		// when delete button is clicked
 		 	let deletecontact=document.getElementById("delete");
 			deletecontact.onclick=function(){
-			if (confirm("You are about to delete this contact, Do you want to continue? ")) {
-			contact.splice(id, 1);
-			localStorage.setItem('Contacts',JSON.stringify(contact));
-			popup.style.display = "none";
-			}else{
-				popup.style.display = "none";
+			// if (confirm("You are about to delete this contact, Do you want to continue? ")) {
+			
+			fetch(`${API_URL}/contacts/${id}`,
+			{
+					method: "DELETE",
+					headers: {
+						'Content-Type': "application/json",
+						'Authorization': `Bearer ${localStorage.token}`
+					},
+					body:JSON.stringify(data)
 			}
+			).then((response)=>{
+				response.json().then((data)=>{
+	
+					if(response.status===201){
+						console.log("data", data)
+						modal.style.display = "none";
+						display_contacts();
+					}
+					if(response.status===403){
+						document.querySelector('#saving_status').innerHTML= "Contact not saved!";
+						document.querySelector('#login_error').innerHTML= data.detail;
+					}
+					if(response.status===404){
+						console.log(data.detail);
+					}
+					if(response.status===400){
+						document.querySelector('#for_fname').innerHTML=data.first_name;
+						document.querySelector('#for_lname').innerHTML=data.last_name;
+						document.querySelector('#for_code').innerHTML=data.country_code;
+						document.querySelector('#for_phone').innerHTML=data.phone_number;
+					}
+					
+				});
+					
+	
+				}).catch((err)=>{
+				console.log(err);
+				});
+			// }else{
+			// 	modal.style.display = "none";
+			// }
 		}
 
 		//when favourate button is clicked
