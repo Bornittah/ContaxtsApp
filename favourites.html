@@ -5,6 +5,7 @@
         <title>Contaxts</title>
         <link rel="stylesheet" type="text/css" href="css/home.css">
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
         <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
@@ -19,9 +20,10 @@
                 <h1>Contaxts</h1>
                 <nav>
                     <ul>
-                        <li><a href="index.html" >Contacts</a></li>
-                        <li><a href="favourites.html">Favourites</a></li>
-                        <li><a href="aboutApp.html">About Contaxts</a></li>
+                        <li><i class="fa fa-users"></i><a href="index.html" >Contacts</a></li>
+                        <li><i class="fa fa-star"></i><a href="favourites.html">Favourites</a></li>
+                        <li><i class="fa fa-book"></i><a href="aboutApp.html">About Contaxts</a></li>
+                        <li><i class="fa fa-power-off"></i><a href="login.html">Logout</a></li>
                     </ul>
                 </nav>
             </div>
@@ -31,24 +33,16 @@
                         <div class="top-menu"> 
                             <nav>
                                 <ul>
-                                    <li><a class="addcontact-btn" id="open_contactmodal">Add contact</a></li>
+                                    <li><a class="addcontact-btn" id="open_contactmodal"><i class="fa fa-plus"></i>Add contact</a></li>
                                     <li>
                                         <input class="searchbar" onkeyup ="search_function()" autofocus="on" type="text" id="searchcontacts" placeholder="Search contact...">
                                     </li>
                                 </ul>
                             </nav>
                             <figure>
-                                <img src="images/phone.jpg"/>
+                                <img id="avatar" alt="Avatar">
                                 <figcaption id="caption"></figcaption>
                             </figure>
-        
-                            <!-- <div class="profile-menu">
-                                <span class="close_profile_menu">&times;</span>
-                                <ul class="user-profile">
-                                    <li><a href="#" onclick="myprofile()" class="">My profile</a></li>
-                                    <li><a href="login.html" class="logout">Logout</a></li>
-                                </ul>
-                           </div> -->
                           </div>
                       </div>
               <!-- content -->
@@ -76,7 +70,11 @@
 </div>
         <script src="/__/firebase/8.3.1/firebase-app.js"></script>
         <script src="/__/firebase/8.3.1/firebase-database.js"></script>
-    <script type="text/javascript" src="js/favourites.js"></script>
-    <!-- <script type="text/javascript" src="js/fetch_contacts.js"></script> -->
+        
+        <script type="text/javascript" src="js/add_contacts.js"></script>
+        <script type="text/javascript" src="js/favourites.js"></script>
+        <script type="text/javascript" src="js/avatar.js"></script>
+        <script type="text/javascript" src="js/search.js"></script>
+       
     </body>
 </html>

@@ -13,18 +13,18 @@ function displayFavorites(){
     }
     ).then((response)=>{
      response.json().then((data)=>{
-        var favouriteList = document.querySelector('#myfavourites');
+        let favouriteList = document.querySelector('#myfavourites');
          if(data.length>0){
 			//  console.log(data[i].first_name)
-            var append = '<table id="contactslists">';
-            for (var i = 0; i < data.length; i++) {
+            let append = '<table id="contacts">';
+            for (let i = 0; i < data.length; i++) {
                 if(data[i].is_favorite===true){
-                append += `<tr class="contactlist-items"><td><button class="removeFavourite"><img src="images/remove-icon.png"  id='remove_fav' onclick='delete_fav(${i})'style="width: 20px"></button></td><td style="text-align:center; margin:0 auto;">
-                <img class="profile-pic-list" src="${data[i].contact_picture}"></td><td> ${data[i].first_name}<br>${data[i].phone_number}</td></tr>`;
+                append += `<tbody><tr class="contactlist-items"><td style="text-align:center; margin:0 auto;">
+                <img class="profile-pic-list" src="${data[i].contact_picture}"></td><td> ${data[i].first_name}<br>${data[i].phone_number}</td><td><button class="removeFavourite"><img src="images/remove-icon.png" id='remove_fav' onclick='delete_fav(${data[i].id},${data[i].is_favorite})'style="width: 20px"></button></td></tr>`;
             }
 
             }
-            favouriteList.innerHTML =append+"</table>";
+            favouriteList.innerHTML =append+"<tbody></table>";
      
              //show number of saved contacts
              if(data.length==1){
@@ -35,7 +35,7 @@ function displayFavorites(){
               
          }else {
              // no contacts
-             showDiv.innerHTML = "No saved contacts";
+             favouriteList.innerHTML = "No saved contacts";
              contacts_length.innerHTML=data.length + " Contacts";
          }
          if(response.status===201){
@@ -61,11 +61,11 @@ window.addEventListener('load',()=>{
     });
 
 // window.addEventListener('load',()=>{
-//     var fav=JSON.parse(localStorage.getItem('Favourites'));
-//     var cl = document.querySelector('#myfavourites');
+//     let fav=JSON.parse(localStorage.getItem('Favourites'));
+//     let cl = document.querySelector('#myfavourites');
 //         if(fav.length>0){
-//             var append = '<table id="contactslists">';
-//             for (var i = 0; i < fav.length; i++) {
+//             let append = '<table id="contactslists">';
+//             for (let i = 0; i < fav.length; i++) {
 //                 append += `<tr class="contactlist-items"><td><button class="removeFavourite"><img src="images/remove-icon.png"  id='remove_fav' onclick='delete_fav(${i})'style="width: 20px"></button></td><td style="text-align:center; margin:0 auto;">
 //                 <img class="profile-pic-list" src="${fav[i].Profile}"></td><td> ${fav[i].Name}
 //                 </td></tr>`;
@@ -80,18 +80,22 @@ window.addEventListener('load',()=>{
 
 //     });
       
-    function delete_fav(index){
+    function delete_fav(index, is_favorite){
         // confirm
-        if (confirm("Do you want to delete this contact from your favourites? ")) {
-            //delete the contact
-            var id;
+        // if (confirm("Do you want to delete this contact from your favourites? ")) {
+        //     //delete the contact
+            let id, favorite;
             id=index;
-            var fav_contact=JSON.parse(localStorage.getItem('Favourites'));
-            fav_contact.splice(id, 1);
-            localStorage.setItem('Favourites',JSON.stringify(fav_contact));
-            window.location.reload();
-        } else {
-        //dont delete
+            favorite=is_favorite;
+        //    id.is_favorite===false;
+        //    displayFavorites();
+        // } else {
+        // //dont delete
+        // }
+        if(favorite==true){
+           favorite=false;
+           displayFavorites();
+           
         }
-            
+            console.log(id,favorite);
     }

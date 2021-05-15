@@ -2,10 +2,12 @@
 <html>
     <head>
         <title>Contaxts</title>
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
         <link rel="stylesheet" type="text/css" href="css/home.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
          <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
+        
          
     </head>
     <body>
@@ -18,9 +20,10 @@
                 <h1>Contaxts</h1>
                 <nav>
                     <ul>
-                        <li><a href="index.html" >Contacts</a></li>
-                        <li><a href="favourites.html">Favourites</a></li>
-                        <li><a href="aboutApp.html">About Contaxts</a></li>
+                        <li><i class="fa fa-users"></i><a href="index.html" >Contacts</a></li>
+                        <li><i class="fa fa-star"></i><a href="favourites.html">Favourites</a></li>
+                        <li><i class="fa fa-book"></i><a href="aboutApp.html">About Contaxts</a></li>
+                        <li><i class="fa fa-power-off"></i><a href="login.html">Logout</a></li>
                     </ul>
                 </nav>
             </div>
@@ -35,7 +38,7 @@
                 <div class="top-menu"> 
                     <nav>
                         <ul>
-                            <li><a class="addcontact-btn" id="open_contactmodal">Add contact</a></li>
+                            <li><a class="addcontact-btn" id="open_contactmodal"><i class="fa fa-plus"></i> Add contact</a></li>
                             <li>
                                 <input class="searchbar" onkeyup ="search_function()" autofocus="on" type="text" id="searchcontacts" placeholder="Search contact...">
                             </li>
@@ -144,5 +147,6 @@
         <script type="text/javascript" src="js/add_contacts.js"></script>
         <script type="text/javascript" src="js/fetch_contacts.js"></script>
         <script type="text/javascript" src="js/country-codes.js"></script>
+        <script type="text/javascript" src="js/search.js"></script>
     </body>
 </html>

@@ -71,7 +71,7 @@ let first_Name = document.querySelector('#cont_fname');
 let last_Name = document.querySelector('#cont_lname');
 let country_Code = document.querySelector('#tel_code');
 let phone_Number = document.querySelector('#cont_phone');
-let addContacButton = document.querySelector('#contacts_save');
+let addContactButton = document.querySelector('#contacts_save');
 const updateContactButton=document.getElementById('update_contact');
 
 function viewContact(index){
@@ -98,7 +98,7 @@ function viewContact(index){
 		let edit=document.getElementById('edit_contact');
 		edit.onclick=function(){
 			updatecontact.style.display="block";
-			addContacButton.style.display="none"
+			addContactButton.style.display="none"
 		    modal.style.display = "block";
 			popup.style.display = "none";
 			
@@ -108,12 +108,12 @@ function viewContact(index){
 			phone_Number.value=data[id].phone_number;
 			image.src=data[id].contact_picture;
 
-			updatecontact.addEventListener('click', function(e){
+			updateContactButton.addEventListener('click', function(e){
 				e.preventDefault();
 				  // confirm
 				  if (confirm("Are you sure, you want to do these changes? ")) {
 				// get form data
-				let updatedcontact = {
+				let updatedContact = {
 					"country_code":countryCode.value,
 					"id":data[id].id,
 					"first_name":firstName.value,
@@ -124,17 +124,17 @@ function viewContact(index){
 						
 					}
 
-					data[id] = updatedcontact;
+					// data[id] = updatedcontact;
 					modal.style.display = "none";
 					//update
 			fetch(`${API_URL}/contacts/${id}`,
 		{
-				method: "PUT",
+				method: "PATCH",
 				headers: {
 					'Content-Type': "application/json",
 					'Authorization': `Bearer ${localStorage.token}`
 				},
-				body:JSON.stringify(data)
+				body:JSON.stringify(updatedContact)
 		}
 		).then((response)=>{
 			response.json().then((data)=>{
@@ -146,7 +146,7 @@ function viewContact(index){
 					display_contacts();
 				}
 				if(response.status===403){
-					document.querySelector('#saving_status').innerHTML= "Contact not saved!";
+					document.querySelector('#saving_status').innerHTML= "Contact not Updated!";
 					document.querySelector('#login_error').innerHTML= data.detail;
 				}
 				if(response.status===404){
@@ -250,25 +250,3 @@ window.addEventListener('load', ()=>{
 });
 
 
-    // search bar
-	function search_function(){
-		const searchli=document.getElementById('searchcontacts');
-			let searchbar = searchli.value.toUpperCase();
-			// console.log(searchbar);
-			let contactlist = document.querySelector('#contacts');
-			let mysearch=contactlist.getElementsByTagName('tr');
-		
-			for (let i = 0; i < mysearch.length; i++) {
-				let searchResult=mysearch[i].getElementsByTagName('td')[1];
-				if(searchResult){
-					let searchvalue=searchResult.textContent || searchResult.innerHTML;
-					if(searchvalue.toUpperCase().indexOf(searchbar) > -1){
-						mysearch[i].style.display="";
-		
-					}else{
-						mysearch[i].style.display="none";
-					}
-				}
-				
-			}
-		}
