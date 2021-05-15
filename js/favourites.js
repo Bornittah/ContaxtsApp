@@ -91,7 +91,7 @@ window.addEventListener('load',()=>{
         //    displayFavorites();
         // } else {
         // //dont delete
-        // }
+        // } 
         if(favorite==true){
            favorite=false;
            displayFavorites();
